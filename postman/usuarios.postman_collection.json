@@ -1,0 +1,240 @@
+{
+  "info": {
+    "name": "Taller Scripts Automatizados - API Usuarios",
+    "description": "Pruebas automatizadas de la API REST /api/usuarios. Se puede correr desde Postman (Run collection) o con Newman (docker compose --profile postman run --rm newman).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "emailPrueba", "value": "" },
+    { "key": "usuarioId", "value": "" }
+  ],
+  "event": [
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Prueba comun a todas las peticiones (se define una sola vez a nivel de coleccion)",
+          "pm.test('Responde en menos de 2 segundos', function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+          "});",
+          "pm.test('Responde en formato JSON', function () {",
+          "    pm.response.to.have.header('Content-Type');",
+          "    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+          "});"
+        ]
+      }
+    }
+  ],
+  "item": [
+    {
+      "name": "01 - Crear usuario valido (201)",
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "// Email unico en cada ejecucion para que la prueba sea repetible",
+              "pm.collectionVariables.set('emailPrueba', 'ana.' + Date.now() + '@correo.com');"
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 201 Created', function () {",
+              "    pm.response.to.have.status(201);",
+              "});",
+              "const usuario = pm.response.json();",
+              "pm.test('Devuelve el usuario con id y los datos enviados', function () {",
+              "    pm.expect(usuario.id).to.be.a('number');",
+              "    pm.expect(usuario.nombre).to.eql('Ana Perez');",
+              "    pm.expect(usuario.email).to.eql(pm.collectionVariables.get('emailPrueba'));",
+              "    pm.expect(usuario.edad).to.eql(25);",
+              "});",
+              "pm.test('Incluye el header Location', function () {",
+              "    pm.response.to.have.header('Location');",
+              "});",
+              "// Se guarda el id para las siguientes peticiones",
+              "pm.collectionVariables.set('usuarioId', usuario.id);"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"email\": \"{{emailPrueba}}\",\n  \"edad\": 25\n}"
+        },
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "02 - Obtener usuario por id (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Es el usuario creado en la peticion anterior', function () {",
+              "    const usuario = pm.response.json();",
+              "    pm.expect(String(usuario.id)).to.eql(String(pm.collectionVariables.get('usuarioId')));",
+              "    pm.expect(usuario.email).to.eql(pm.collectionVariables.get('emailPrueba'));",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios/{{usuarioId}}"
+      }
+    },
+    {
+      "name": "03 - Listar usuarios (200)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 200 OK', function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "pm.test('Devuelve una lista con al menos un usuario', function () {",
+              "    const lista = pm.response.json();",
+              "    pm.expect(lista).to.be.an('array');",
+              "    pm.expect(lista.length).to.be.at.least(1);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "04 - Crear usuario con email invalido (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 400 Bad Request', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test('Indica el error en el campo email', function () {",
+              "    const error = pm.response.json();",
+              "    pm.expect(error.errores).to.have.property('email');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"email\": \"ana-correo\",\n  \"edad\": 25\n}"
+        },
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "05 - Crear usuario menor de edad (400)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 400 Bad Request', function () {",
+              "    pm.response.to.have.status(400);",
+              "});",
+              "pm.test('Indica el error en el campo edad', function () {",
+              "    const error = pm.response.json();",
+              "    pm.expect(error.errores).to.have.property('edad');",
+              "    pm.expect(error.errores.edad).to.include('18');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Ana Perez\",\n  \"email\": \"menor@correo.com\",\n  \"edad\": 15\n}"
+        },
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "06 - Crear usuario con email duplicado (409)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 409 Conflict', function () {",
+              "    pm.response.to.have.status(409);",
+              "});",
+              "pm.test('Indica que el email ya esta registrado', function () {",
+              "    const error = pm.response.json();",
+              "    pm.expect(error.errores.email).to.include('ya esta registrado');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Otro Usuario\",\n  \"email\": \"{{emailPrueba}}\",\n  \"edad\": 30\n}"
+        },
+        "url": "{{baseUrl}}/api/usuarios"
+      }
+    },
+    {
+      "name": "07 - Obtener usuario inexistente (404)",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test('Status 404 Not Found', function () {",
+              "    pm.response.to.have.status(404);",
+              "});",
+              "pm.test('El mensaje indica el id buscado', function () {",
+              "    pm.expect(pm.response.json().mensaje).to.include('999999');",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/usuarios/999999"
+      }
+    }
+  ]
+}
