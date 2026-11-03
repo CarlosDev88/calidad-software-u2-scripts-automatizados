@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Taller Scripts Automatizados - API Usuarios" tests="7" time="0.216">
+  <testsuite name="01 - Crear usuario valido (201)" id="330ebe3e-4034-413d-8e05-6a863dbcfbe6" timestamp="2026-11-03T20:48:52.442Z" tests="5" failures="0" errors="0" time="0.161">
+    <testcase name="Responde en menos de 2 segundos" time="0.161" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.161" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 201 Created" time="0.161" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Devuelve el usuario con id y los datos enviados" time="0.161" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Incluye el header Location" time="0.161" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="02 - Obtener usuario por id (200)" id="2f0dc68c-2caf-4e1e-9efe-81505f678876" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.008">
+    <testcase name="Responde en menos de 2 segundos" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 200 OK" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Es el usuario creado en la peticion anterior" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="03 - Listar usuarios (200)" id="de281cdd-2118-40c8-93b5-9be6c3363908" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.006">
+    <testcase name="Responde en menos de 2 segundos" time="0.006" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.006" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 200 OK" time="0.006" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Devuelve una lista con al menos un usuario" time="0.006" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="04 - Crear usuario con email invalido (400)" id="0d81070b-0530-4edc-b2f3-fec93772569f" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.015">
+    <testcase name="Responde en menos de 2 segundos" time="0.015" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.015" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 400 Bad Request" time="0.015" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Indica el error en el campo email" time="0.015" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="05 - Crear usuario menor de edad (400)" id="03f0f03d-33a2-4edc-b26f-3e64b731bd97" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.008">
+    <testcase name="Responde en menos de 2 segundos" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 400 Bad Request" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Indica el error en el campo edad" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="06 - Crear usuario con email duplicado (409)" id="42fa480e-a25e-4486-97f9-c2af823f5843" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.009">
+    <testcase name="Responde en menos de 2 segundos" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 409 Conflict" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Indica que el email ya esta registrado" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="07 - Obtener usuario inexistente (404)" id="8f8e0162-24cb-4cd7-959c-6b947cd5b0d3" timestamp="2026-11-03T20:48:52.442Z" tests="4" failures="0" errors="0" time="0.009">
+    <testcase name="Responde en menos de 2 segundos" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 404 Not Found" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="El mensaje indica el id buscado" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+</testsuites>
