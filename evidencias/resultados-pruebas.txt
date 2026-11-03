@@ -1,0 +1,23 @@
+Resultados de pruebas automatizadas - 2026-11-03 20:47:54
+======================================================================
+[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Email con formato invalido
+[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Nombre vacio
+[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Nombre muy corto
+[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Edad menor a 18
+[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Edad mayor a 100
+[OK   ] RegistroFormularioTest   | Registro con datos validos muestra mensaje de exito y limpia el formulario
+[OK   ] RegistroFormularioTest   | Enviar el formulario vacio muestra error en los tres campos
+[OK   ] RegistroFormularioTest   | Registrar un email que ya existe muestra error de duplicado
+[OK   ] UsuarioApiTest           | GET por id inexistente responde 404
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Nombre vacio
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Nombre muy corto
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Email con formato invalido
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Email vacio
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad menor a 18
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad mayor a 100
+[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad nula
+[OK   ] UsuarioApiTest           | POST con email ya registrado responde 409
+[OK   ] UsuarioApiTest           | GET lista todos los usuarios y responde 200
+[OK   ] UsuarioApiTest           | POST con JSON mal formado responde 400
+[OK   ] UsuarioApiTest           | GET por id devuelve el usuario creado y responde 200
+[OK   ] UsuarioApiTest           | POST con datos validos crea el usuario y responde 201
