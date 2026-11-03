@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de usuarios</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f2f4f8; display: flex; justify-content: center; padding-top: 40px; }
+        .tarjeta { background: #fff; padding: 28px 32px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,.08); width: 380px; }
+        h1 { font-size: 22px; margin: 0 0 18px; color: #1f2d3d; }
+        label { display: block; font-weight: bold; margin-top: 14px; color: #333; }
+        input { width: 100%; padding: 9px; margin-top: 5px; border: 1px solid #c8ced6; border-radius: 6px; box-sizing: border-box; font-size: 14px; }
+        input.invalido { border-color: #d93025; }
+        .error { color: #d93025; font-size: 13px; min-height: 16px; display: block; margin-top: 4px; }
+        button { margin-top: 20px; width: 100%; padding: 11px; background: #1a73e8; color: #fff; border: 0; border-radius: 6px; font-size: 15px; cursor: pointer; }
+        .mensaje { margin-top: 16px; padding: 10px; border-radius: 6px; display: none; }
+        .exito { background: #e6f4ea; color: #137333; }
+        .fallo { background: #fce8e6; color: #a50e0e; }
+    </style>
+</head>
+<body>
+<div class="tarjeta">
+    <h1>Registro de usuarios</h1>
+
+    <!-- novalidate: la validacion la hace la API, asi las pruebas verifican el flujo completo -->
+    <form id="form-registro" novalidate>
+        <label for="nombre">Nombre</label>
+        <input id="nombre" name="nombre" type="text" placeholder="Ej: Ana Perez">
+        <span id="error-nombre" class="error"></span>
+
+        <label for="email">Email</label>
+        <input id="email" name="email" type="email" placeholder="Ej: ana@correo.com">
+        <span id="error-email" class="error"></span>
+
+        <label for="edad">Edad</label>
+        <input id="edad" name="edad" type="number" placeholder="Ej: 25">
+        <span id="error-edad" class="error"></span>
+
+        <button id="btn-registrar" type="submit">Registrar</button>
+    </form>
+
+    <div id="mensaje-exito" class="mensaje exito"></div>
+    <div id="mensaje-error" class="mensaje fallo"></div>
+</div>
+
+<script>
+    const CAMPOS = ['nombre', 'email', 'edad'];
+    const form = document.getElementById('form-registro');
+    const exito = document.getElementById('mensaje-exito');
+    const fallo = document.getElementById('mensaje-error');
+
+    function limpiarMensajes() {
+        CAMPOS.forEach(c => {
+            document.getElementById('error-' + c).textContent = '';
+            document.getElementById(c).classList.remove('invalido');
+        });
+        exito.style.display = 'none';
+        exito.textContent = '';
+        fallo.style.display = 'none';
+        fallo.textContent = '';
+    }
+
+    function mostrarErrores(respuesta) {
+        const errores = respuesta.errores || {};
+        Object.keys(errores).forEach(campo => {
+            const span = document.getElementById('error-' + campo);
+            if (span) {
+                span.textContent = errores[campo];
+                document.getElementById(campo).classList.add('invalido');
+            }
+        });
+        fallo.textContent = respuesta.mensaje || 'No se pudo registrar el usuario';
+        fallo.style.display = 'block';
+    }
+
+    form.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+        limpiarMensajes();
+
+        const edadTexto = document.getElementById('edad').value;
+        const datos = {
+            nombre: document.getElementById('nombre').value,
+            email: document.getElementById('email').value,
+            edad: edadTexto === '' ? null : Number(edadTexto)
+        };
+
+        try {
+            const resp = await fetch('/api/usuarios', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(datos)
+            });
+            const cuerpo = await resp.json();
+            if (resp.status === 201) {
+                exito.textContent = 'Usuario registrado con exito (id ' + cuerpo.id + ')';
+                exito.style.display = 'block';
+                form.reset();
+            } else {
+                mostrarErrores(cuerpo);
+            }
+        } catch (e) {
+            fallo.textContent = 'Error de conexion con el servidor';
+            fallo.style.display = 'block';
+        }
+    });
+</script>
+</body>
+</html>
