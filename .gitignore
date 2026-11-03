@@ -1,0 +1,13 @@
+# Maven
+target/
+
+# IDEs
+.idea/
+.vscode/
+*.iml
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Las evidencias SI se suben al repo (capturas y resultados para el informe)
