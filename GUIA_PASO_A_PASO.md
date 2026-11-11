@@ -116,7 +116,7 @@ Mientras corre, el navegador se ve en vivo en http://localhost:7900 (clave `secr
 ### B3. Correr solo una parte
 
 ```powershell
-docker compose run --rm tests mvn -B test -Dgroups=unit -Djacoco.skip=true   # solo unitarias
+docker compose run --rm tests mvn -B test "-Dgroups=unit" "-Djacoco.skip=true"   # solo unitarias (en PowerShell las comillas son necesarias)
 ```
 
 Las otras etiquetas son `api` y `ui`.

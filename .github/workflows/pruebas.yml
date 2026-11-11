@@ -24,6 +24,11 @@ jobs:
         if: always()
         run: docker compose down
 
+      # Los archivos los crea el contenedor como root: se dan permisos de lectura para poder subirlos
+      - name: Permisos de lectura para las evidencias
+        if: always()
+        run: sudo chmod -R a+rX evidencias
+
       - name: Guardar evidencias (capturas, resultados y cobertura)
         if: always()
         uses: actions/upload-artifact@v4

@@ -4,12 +4,10 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.StandardCopyOption;
 
 /**
  * Guarda las evidencias de las pruebas (capturas de pantalla y resultados).
@@ -35,9 +33,11 @@ public final class Evidencias {
         try {
             Path carpeta = directorio().resolve("capturas");
             Files.createDirectories(carpeta);
-            File temporal = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            // Se escriben los bytes directamente: copiar el archivo temporal de Selenium conservaba
+            // permisos de solo-dueno (600) y en GitHub Actions no se podian subir como artefacto.
+            byte[] imagen = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             Path destino = carpeta.resolve(nombreSeguro(nombre) + ".png");
-            Files.copy(temporal.toPath(), destino, StandardCopyOption.REPLACE_EXISTING);
+            Files.write(destino, imagen);
             return destino;
         } catch (IOException e) {
             throw new UncheckedIOException("No se pudo guardar la captura " + nombre, e);
