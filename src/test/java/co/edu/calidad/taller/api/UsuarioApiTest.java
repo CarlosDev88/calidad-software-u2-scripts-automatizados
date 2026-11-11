@@ -13,12 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -122,11 +124,14 @@ class UsuarioApiTest {
         return Stream.of(
                 Arguments.of("Nombre vacio", new UsuarioRequest("", DatosPrueba.emailUnico("a"), 25), "nombre"),
                 Arguments.of("Nombre muy corto", new UsuarioRequest("Al", DatosPrueba.emailUnico("a"), 25), "nombre"),
+                Arguments.of("Nombre corto rodeado de espacios", new UsuarioRequest("  A  ", DatosPrueba.emailUnico("a"), 25), "nombre"),
+                Arguments.of("Nombre solo con espacios", new UsuarioRequest("   ", DatosPrueba.emailUnico("a"), 25), "nombre"),
                 Arguments.of("Email con formato invalido", new UsuarioRequest("Ana Perez", "ana-correo", 25), "email"),
                 Arguments.of("Email vacio", new UsuarioRequest("Ana Perez", "", 25), "email"),
                 Arguments.of("Edad menor a 18", new UsuarioRequest("Ana Perez", DatosPrueba.emailUnico("a"), 15), "edad"),
                 Arguments.of("Edad mayor a 100", new UsuarioRequest("Ana Perez", DatosPrueba.emailUnico("a"), 120), "edad"),
-                Arguments.of("Edad nula", new UsuarioRequest("Ana Perez", DatosPrueba.emailUnico("a"), null), "edad")
+                Arguments.of("Edad nula", new UsuarioRequest("Ana Perez", DatosPrueba.emailUnico("a"), null), "edad"),
+                Arguments.of("Edad negativa", new UsuarioRequest("Ana Perez", DatosPrueba.emailUnico("a"), -1), "edad")
         );
     }
 
@@ -155,6 +160,52 @@ class UsuarioApiTest {
         assertThat(respuesta.getBody()).isNotNull();
         assertThat(respuesta.getBody().errores()).containsKey("email");
         assertThat(usuarioService.listar()).hasSize(1);
+    }
+
+    /** Edad con un tipo de dato que no es un entero: no se debe aceptar ni redondear en silencio. */
+    @ParameterizedTest(name = "{0}")
+    @CsvSource(delimiter = '|', value = {
+            "Edad decimal (18.9)        | {\"nombre\": \"Ana Perez\", \"email\": \"ana.decimal@correo.com\", \"edad\": 18.9}",
+            "Edad como texto (\"25\")   | {\"nombre\": \"Ana Perez\", \"email\": \"ana.texto@correo.com\", \"edad\": \"25\"}"
+    })
+    @DisplayName("POST con edad que no es un numero entero responde 400")
+    void rechazarEdadNoEntera(String caso, String json) {
+        ResponseEntity<ErrorRespuesta> respuesta = rest.postForEntity(URL, jsonConCabecera(json), ErrorRespuesta.class);
+
+        assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.BAD_REQUEST);
+        assertThat(usuarioService.listar()).isEmpty();
+    }
+
+    @Test
+    @DisplayName("Metodo HTTP no soportado responde 405 con el formato de error de la API")
+    void metodoNoSoportado() {
+        ResponseEntity<ErrorRespuesta> respuesta =
+                rest.exchange(URL + "/1", HttpMethod.DELETE, null, ErrorRespuesta.class);
+
+        assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.METHOD_NOT_ALLOWED);
+        assertThat(respuesta.getBody()).isNotNull();
+        assertThat(respuesta.getBody().estado()).isEqualTo(405);
+        assertThat(respuesta.getBody().mensaje()).contains("DELETE");
+    }
+
+    @Test
+    @DisplayName("Content-Type distinto de JSON responde 415 con el formato de error de la API")
+    void tipoDeContenidoNoSoportado() {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.TEXT_PLAIN);
+
+        ResponseEntity<ErrorRespuesta> respuesta =
+                rest.postForEntity(URL, new HttpEntity<>("nombre=Ana", headers), ErrorRespuesta.class);
+
+        assertThat(respuesta.getStatusCode()).isEqualTo(HttpStatus.UNSUPPORTED_MEDIA_TYPE);
+        assertThat(respuesta.getBody()).isNotNull();
+        assertThat(respuesta.getBody().estado()).isEqualTo(415);
+    }
+
+    private HttpEntity<String> jsonConCabecera(String json) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        return new HttpEntity<>(json, headers);
     }
 
     @Test

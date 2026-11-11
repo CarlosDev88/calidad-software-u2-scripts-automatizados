@@ -10,6 +10,10 @@ import jakarta.validation.constraints.Size;
 /**
  * Datos de entrada para registrar un usuario.
  * Las reglas de validacion son las que verifican las pruebas automatizadas.
+ *
+ * Los espacios al inicio y al final se quitan AL CREAR el objeto, antes de validar.
+ * (Defecto corregido: antes se recortaba despues de validar, y "  A  " pasaba la regla
+ * de 3 caracteres y se guardaba como "A".)
  */
 public record UsuarioRequest(
 
@@ -26,4 +30,9 @@ public record UsuarioRequest(
         @Max(value = 100, message = "La edad maxima es 100")
         Integer edad
 ) {
+
+    public UsuarioRequest {
+        nombre = nombre == null ? null : nombre.trim();
+        email = email == null ? null : email.trim();
+    }
 }

@@ -49,15 +49,6 @@ class UsuarioServiceTest {
         }
 
         @Test
-        @DisplayName("quita los espacios al inicio y al final del nombre y el email")
-        void normalizaEspacios() {
-            Usuario creado = servicio.crear(new UsuarioRequest("  Ana Perez  ", "  ana@correo.com ", 25));
-
-            assertThat(creado.nombre()).isEqualTo("Ana Perez");
-            assertThat(creado.email()).isEqualTo("ana@correo.com");
-        }
-
-        @Test
         @DisplayName("rechaza un email repetido aunque cambie mayusculas/minusculas")
         void rechazaEmailDuplicadoSinImportarMayusculas() {
             servicio.crear(new UsuarioRequest("Ana Perez", "ana@correo.com", 25));

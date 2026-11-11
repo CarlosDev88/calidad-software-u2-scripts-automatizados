@@ -70,6 +70,7 @@ class RegistroFormularioTest implements ConNavegador {
         assertThat(mensaje).contains("Usuario registrado con exito");
         assertThat(pagina.valorDe("nombre")).isEmpty();
         assertThat(pagina.valorDe("email")).isEmpty();
+        assertThat(pagina.valorDe("edad")).isEmpty();
     }
 
     /**

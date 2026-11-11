@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: co.edu.calidad.taller.api.UsuarioApiTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.569 s -- in co.edu.calidad.taller.api.UsuarioApiTest
+Tests run: 20, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.760 s -- in co.edu.calidad.taller.api.UsuarioApiTest

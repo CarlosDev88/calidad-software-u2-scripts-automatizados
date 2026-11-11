@@ -9,34 +9,27 @@ on:
 
 jobs:
 
-  # JUnit 5 (unitarias + API con TestRestTemplate + formulario con Selenium) y cobertura JaCoCo
+  # JUnit 5 (unitarias + API + Selenium) y cobertura JaCoCo, con el MISMO comando de la guia (Docker Compose)
   junit-selenium:
-    name: JUnit + Selenium + cobertura
+    name: JUnit + Selenium + cobertura (Docker)
     runs-on: ubuntu-latest
     steps:
       - name: Descargar el codigo
         uses: actions/checkout@v4
 
-      - name: Instalar Java 21
-        uses: actions/setup-java@v4
-        with:
-          distribution: temurin
-          java-version: "21"
-          cache: maven
+      - name: Correr todas las pruebas con Docker Compose
+        run: docker compose up --build --exit-code-from tests
 
-      # El runner de GitHub ya trae Google Chrome; Selenium lo usa en modo headless
-      - name: Correr todas las pruebas y verificar cobertura
-        run: mvn -B verify
+      - name: Apagar contenedores
+        if: always()
+        run: docker compose down
 
       - name: Guardar evidencias (capturas, resultados y cobertura)
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: evidencias-junit-selenium
-          path: |
-            evidencias/
-            target/surefire-reports/
-            target/site/jacoco/
+          path: evidencias/
 
   # Coleccion Postman ejecutada con Newman contra la app levantada en Docker
   postman:

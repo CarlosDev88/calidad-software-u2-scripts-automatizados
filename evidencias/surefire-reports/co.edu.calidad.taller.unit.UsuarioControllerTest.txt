@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: co.edu.calidad.taller.unit.UsuarioControllerTest
 -------------------------------------------------------------------------------
-Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.674 s -- in co.edu.calidad.taller.unit.UsuarioControllerTest
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.384 s -- in co.edu.calidad.taller.unit.UsuarioControllerTest

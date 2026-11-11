@@ -41,7 +41,7 @@ public class UsuarioService {
             throw new EmailDuplicadoException(request.email());
         }
         Long id = secuencia.incrementAndGet();
-        Usuario nuevo = new Usuario(id, request.nombre().trim(), request.email().trim(), request.edad());
+        Usuario nuevo = new Usuario(id, request.nombre(), request.email(), request.edad());
         usuarios.put(id, nuevo);
         return nuevo;
     }

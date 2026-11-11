@@ -14,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -62,6 +63,7 @@ class UsuarioRequestValidacionTest {
 
     @ParameterizedTest(name = "edad {0} -> valida: {1}")
     @CsvSource({
+            "-1,  false",   // particion: edad negativa
             "17,  false",   // justo debajo del minimo
             "18,  true",    // minimo
             "100, true",    // maximo
@@ -104,6 +106,23 @@ class UsuarioRequestValidacionTest {
         Set<String> errores = camposInvalidos(new UsuarioRequest("Ana Perez", email, 25));
 
         assertThat(errores.contains("email")).isEqualTo(!esValido);
+    }
+
+    @ParameterizedTest(name = "nombre \"{0}\" -> invalido")
+    @ValueSource(strings = {"", "   ", "  A  ", " Al "})
+    @DisplayName("Nombre vacio, solo espacios o corto rodeado de espacios es invalido")
+    void nombreConEspaciosSeValidaRecortado(String nombre) {
+        assertThat(camposInvalidos(new UsuarioRequest(nombre, "ana@correo.com", 25))).contains("nombre");
+    }
+
+    @Test
+    @DisplayName("Los espacios al inicio y al final se quitan antes de validar")
+    void recortaEspaciosAntesDeValidar() {
+        UsuarioRequest request = new UsuarioRequest("  Ana Perez  ", " ana@correo.com ", 25);
+
+        assertThat(request.nombre()).isEqualTo("Ana Perez");
+        assertThat(request.email()).isEqualTo("ana@correo.com");
+        assertThat(camposInvalidos(request)).isEmpty();
     }
 
     @Test

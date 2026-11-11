@@ -16,7 +16,7 @@ Suite de pruebas automatizadas para una aplicación pequeña de registro de usua
 
 | Nivel | Herramienta | Qué prueba | Clases |
 |---|---|---|---|
-| Unitaria | JUnit 5 | Lógica de negocio y reglas de validación (valores límite) | `unit/UsuarioServiceTest`, `unit/UsuarioRequestValidacionTest` |
+| Unitaria | JUnit 5 | Lógica de negocio y reglas de validación (valores límite y particiones) | `unit/UsuarioServiceTest`, `unit/UsuarioRequestValidacionTest` |
 | Unitaria (aislada) | JUnit 5 + **Mockito** + MockMvc | Controlador REST con el servicio simulado | `unit/UsuarioControllerTest` |
 | Integración / API | JUnit 5 + **TestRestTemplate** | Endpoints REST reales | `api/UsuarioApiTest` |
 | Integración / API | **Postman** + Newman | Endpoints REST desde fuera de la app | `postman/usuarios.postman_collection.json` |
@@ -73,10 +73,11 @@ Mientras corre Selenium en Docker, el navegador se ve en vivo en http://localhos
 |---|---|
 | `resultados-pruebas.txt` | Cada prueba con su resultado (OK / FALLO) |
 | `salida-consola.txt` | Salida completa de `mvn verify` |
-| `salida-solo-unitarias.txt` | Ejecución de solo las pruebas unitarias (`-Dgroups=unit`) |
 | `salida-newman.txt` | Salida de consola de Newman |
 | `surefire-reports/` | Reportes JUnit (txt y xml, con tiempos) |
-| `cobertura/` | Cobertura JaCoCo (`jacoco.csv`, `jacoco.xml` y captura del reporte). El reporte HTML completo queda en `target/site/jacoco/index.html` |
+| `cobertura/` | Cobertura JaCoCo: `jacoco.csv`, `jacoco.xml` y el reporte HTML en `cobertura/html/index.html` |
+| `defectos-antes-de-corregir.txt` | Pruebas que fallaron antes de corregir tres defectos encontrados (ver la guía, sección A7) |
+| `capturas-proceso/` | Capturas de pantalla de la ejecución en GitHub Actions y del reporte de cobertura |
 | `capturas/*.png` | Capturas de Selenium: datos de entrada y resultado de cada caso |
 | `newman-resultados.xml` | Resultado de la colección Postman |
 
@@ -86,9 +87,10 @@ Mientras corre Selenium en Docker, el navegador se ve en vivo en http://localhos
 |---|---|---|
 | GET | `/api/usuarios` | 200 lista |
 | GET | `/api/usuarios/{id}` | 200 · 404 no existe · 400 id no numérico |
+| Otros métodos / otro Content-Type | `/api/usuarios...` | 405 · 415 (mismo formato de error) |
 | POST | `/api/usuarios` | 201 creado · 400 datos inválidos / JSON mal formado · 409 email duplicado |
 
-Reglas: nombre obligatorio de 3 a 60 caracteres, email obligatorio y válido, edad obligatoria entre 18 y 100, email único.
+Reglas: nombre obligatorio de 3 a 60 caracteres (sin contar espacios al inicio o al final), email obligatorio y válido, edad obligatoria, entera, entre 18 y 100, email único.
 
 ## Estructura
 

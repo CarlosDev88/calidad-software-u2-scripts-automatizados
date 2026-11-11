@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pruebas automatizadas - Calidad de Software U2</a> &gt; <a href="index.source.html" class="el_package">co.edu.calidad.taller.service</a> &gt; <span class="el_source">UsuarioService.java</span></div><h1>UsuarioService.java</h1><pre class="source lang-java linenums">package co.edu.calidad.taller.service;
+
+import co.edu.calidad.taller.exception.EmailDuplicadoException;
+import co.edu.calidad.taller.exception.UsuarioNoEncontradoException;
+import co.edu.calidad.taller.model.Usuario;
+import co.edu.calidad.taller.model.UsuarioRequest;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicLong;
+
+/**
+ * Logica de negocio. Guarda los usuarios en memoria (no se necesita base de datos para el taller).
+ */
+@Service
+<span class="fc" id="L19">public class UsuarioService {</span>
+
+<span class="fc" id="L21">    private final Map&lt;Long, Usuario&gt; usuarios = new ConcurrentHashMap&lt;&gt;();</span>
+<span class="fc" id="L22">    private final AtomicLong secuencia = new AtomicLong(0);</span>
+
+    public List&lt;Usuario&gt; listar() {
+<span class="fc" id="L25">        return new ArrayList&lt;&gt;(usuarios.values());</span>
+    }
+
+    public Usuario buscarPorId(Long id) {
+<span class="fc" id="L29">        Usuario usuario = usuarios.get(id);</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (usuario == null) {</span>
+<span class="fc" id="L31">            throw new UsuarioNoEncontradoException(id);</span>
+        }
+<span class="fc" id="L33">        return usuario;</span>
+    }
+
+    public Usuario crear(UsuarioRequest request) {
+        // Regla de negocio: no se permiten dos usuarios con el mismo email
+<span class="fc" id="L38">        boolean existe = usuarios.values().stream()</span>
+<span class="fc" id="L39">                .anyMatch(u -&gt; u.email().equalsIgnoreCase(request.email()));</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (existe) {</span>
+<span class="fc" id="L41">            throw new EmailDuplicadoException(request.email());</span>
+        }
+<span class="fc" id="L43">        Long id = secuencia.incrementAndGet();</span>
+<span class="fc" id="L44">        Usuario nuevo = new Usuario(id, request.nombre(), request.email(), request.edad());</span>
+<span class="fc" id="L45">        usuarios.put(id, nuevo);</span>
+<span class="fc" id="L46">        return nuevo;</span>
+    }
+
+    /** Deja el almacenamiento vacio. Lo usan las pruebas para empezar siempre desde cero. */
+    public void limpiar() {
+<span class="fc" id="L51">        usuarios.clear();</span>
+<span class="fc" id="L52">        secuencia.set(0);</span>
+<span class="fc" id="L53">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

@@ -1,0 +1,44 @@
+$ mvn test -Dgroups=unit,api   (pruebas nuevas escritas ANTES de corregir el codigo)
+
+[INFO] Results:
+[INFO] 
+[ERROR] Failures: 
+[ERROR]   UsuarioApiTest.metodoNoSoportado:187 
+expected: 405
+ but was: 0
+[ERROR]   UsuarioApiTest.rechazarDatosInvalidos:144 
+expected: 400 BAD_REQUEST
+ but was: 201 CREATED
+[ERROR]   UsuarioApiTest.rechazarEdadNoEntera:175 
+expected: 400 BAD_REQUEST
+ but was: 201 CREATED
+[ERROR]   UsuarioApiTest.rechazarEdadNoEntera:175 
+expected: 400 BAD_REQUEST
+ but was: 201 CREATED
+[ERROR]   UsuarioApiTest.tipoDeContenidoNoSoportado:202 
+expected: 415
+ but was: 0
+[ERROR]   UsuarioRequestValidacionTest.nombreConEspaciosSeValidaRecortado:115 
+Expecting HashSet:
+  []
+to contain:
+  ["nombre"]
+but could not find the following element(s):
+  ["nombre"]
+
+[ERROR]   UsuarioRequestValidacionTest.nombreConEspaciosSeValidaRecortado:115 
+Expecting HashSet:
+  []
+to contain:
+  ["nombre"]
+but could not find the following element(s):
+  ["nombre"]
+
+[ERROR]   UsuarioRequestValidacionTest.recortaEspaciosAntesDeValidar:123 
+expected: "Ana Perez"
+ but was: "  Ana Perez  "
+[INFO] 
+[ERROR] Tests run: 55, Failures: 8, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE

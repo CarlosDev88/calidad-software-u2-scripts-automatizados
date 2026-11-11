@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ManejadorErrores.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Pruebas automatizadas - Calidad de Software U2</a> &gt; <a href="index.source.html" class="el_package">co.edu.calidad.taller.exception</a> &gt; <span class="el_source">ManejadorErrores.java</span></div><h1>ManejadorErrores.java</h1><pre class="source lang-java linenums">package co.edu.calidad.taller.exception;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.FieldError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+/**
+ * Convierte las excepciones en respuestas HTTP claras (manejo centralizado de errores).
+ */
+@RestControllerAdvice
+<span class="fc" id="L21">public class ManejadorErrores {</span>
+
+    /** 400: alguna validacion de UsuarioRequest fallo. Devuelve el error de cada campo. */
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity&lt;ErrorRespuesta&gt; datosInvalidos(MethodArgumentNotValidException ex) {
+<span class="fc" id="L26">        Map&lt;String, String&gt; errores = new LinkedHashMap&lt;&gt;();</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (FieldError error : ex.getBindingResult().getFieldErrors()) {</span>
+            // Un campo puede fallar varias reglas a la vez (ej: &quot;&quot; falla @NotBlank y @Size).
+            // Se muestra un solo mensaje por campo y tiene prioridad el de &quot;obligatorio&quot;,
+            // asi la respuesta siempre es la misma (las pruebas no dependen del orden).
+<span class="fc bfc" id="L31" title="All 4 branches covered.">            boolean esObligatorio = &quot;NotBlank&quot;.equals(error.getCode()) || &quot;NotNull&quot;.equals(error.getCode());</span>
+<span class="fc bfc" id="L32" title="All 4 branches covered.">            if (esObligatorio || !errores.containsKey(error.getField())) {</span>
+<span class="fc" id="L33">                errores.put(error.getField(), error.getDefaultMessage());</span>
+            }
+<span class="fc" id="L35">        }</span>
+<span class="fc" id="L36">        return respuesta(HttpStatus.BAD_REQUEST, &quot;Datos invalidos&quot;, errores);</span>
+    }
+
+    /**
+     * 400: el cuerpo no es un JSON valido o un campo tiene un tipo incorrecto
+     * (por ejemplo edad 18.9 o &quot;25&quot;: ver application.properties, ya no se convierten en silencio).
+     */
+    @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
+    public ResponseEntity&lt;ErrorRespuesta&gt; peticionMalFormada(Exception ex) {
+<span class="fc" id="L45">        return respuesta(HttpStatus.BAD_REQUEST,</span>
+<span class="fc" id="L46">                &quot;La peticion esta mal formada o tiene un tipo de dato invalido (la edad debe ser un numero entero)&quot;, Map.of());</span>
+    }
+
+    /** 405: metodo HTTP no soportado (ej: DELETE). Antes respondia con el formato por defecto de Spring. */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity&lt;ErrorRespuesta&gt; metodoNoSoportado(HttpRequestMethodNotSupportedException ex) {
+<span class="fc" id="L52">        return respuesta(HttpStatus.METHOD_NOT_ALLOWED, &quot;Metodo &quot; + ex.getMethod() + &quot; no permitido en esta ruta&quot;, Map.of());</span>
+    }
+
+    /** 415: el cuerpo no es JSON (ej: text/plain). Antes respondia con el formato por defecto de Spring. */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity&lt;ErrorRespuesta&gt; tipoNoSoportado(HttpMediaTypeNotSupportedException ex) {
+<span class="fc" id="L58">        return respuesta(HttpStatus.UNSUPPORTED_MEDIA_TYPE, &quot;Tipo de contenido no soportado: use application/json&quot;, Map.of());</span>
+    }
+
+    /** 404: el usuario buscado no existe. */
+    @ExceptionHandler(UsuarioNoEncontradoException.class)
+    public ResponseEntity&lt;ErrorRespuesta&gt; noEncontrado(UsuarioNoEncontradoException ex) {
+<span class="fc" id="L64">        return respuesta(HttpStatus.NOT_FOUND, ex.getMessage(), Map.of());</span>
+    }
+
+    /** 409: el email ya esta registrado. */
+    @ExceptionHandler(EmailDuplicadoException.class)
+    public ResponseEntity&lt;ErrorRespuesta&gt; emailDuplicado(EmailDuplicadoException ex) {
+<span class="fc" id="L70">        return respuesta(HttpStatus.CONFLICT, ex.getMessage(), Map.of(&quot;email&quot;, &quot;Este email ya esta registrado&quot;));</span>
+    }
+
+    private ResponseEntity&lt;ErrorRespuesta&gt; respuesta(HttpStatus estado, String mensaje, Map&lt;String, String&gt; errores) {
+<span class="fc" id="L74">        return ResponseEntity.status(estado).body(new ErrorRespuesta(estado.value(), mensaje, errores));</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

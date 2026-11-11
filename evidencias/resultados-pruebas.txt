@@ -1,4 +1,4 @@
-Resultados de pruebas automatizadas - 2026-11-11 17:13:09
+Resultados de pruebas automatizadas - 2026-11-11 22:37:34
 ======================================================================
 [OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Email con formato invalido
 [OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Nombre vacio
@@ -8,45 +8,57 @@ Resultados de pruebas automatizadas - 2026-11-11 17:13:09
 [OK   ] RegistroFormularioTest       | Registro con datos validos muestra mensaje de exito y limpia el formulario
 [OK   ] RegistroFormularioTest       | Enviar el formulario vacio muestra error en los tres campos
 [OK   ] RegistroFormularioTest       | Registrar un email que ya existe muestra error de duplicado
-[OK   ] UsuarioApiTest               | GET por id inexistente responde 404
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre vacio
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre muy corto
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email con formato invalido
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email vacio
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad menor a 18
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad mayor a 100
-[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad nula
-[OK   ] UsuarioApiTest               | POST con email ya registrado responde 409
-[OK   ] UsuarioApiTest               | GET lista todos los usuarios y responde 200
-[OK   ] UsuarioApiTest               | POST con JSON mal formado responde 400
-[OK   ] UsuarioApiTest               | GET por id devuelve el usuario creado y responde 200
-[OK   ] UsuarioApiTest               | POST con datos validos crea el usuario y responde 201
 [OK   ] UsuarioControllerTest        | POST invalido responde 400 y NUNCA llama al servicio
 [OK   ] UsuarioControllerTest        | GET con id no numerico responde 400
 [OK   ] UsuarioControllerTest        | GET lista devuelve lo que entrega el servicio
 [OK   ] UsuarioControllerTest        | Si el servicio lanza EmailDuplicadoException responde 409
 [OK   ] UsuarioControllerTest        | POST valido llama al servicio una vez y responde 201 con Location
 [OK   ] UsuarioControllerTest        | Si el servicio lanza UsuarioNoEncontradoException responde 404
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo.com" -> valido: true
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana.perez+1@uni.edu.co" -> valido: true
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana-correo" -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@" -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "@correo.com" -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo" -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 2 caracteres -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 3 caracteres -> valido: true
-[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 60 caracteres -> valido: true
-[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 61 caracteres -> valido: false
-[OK   ] UsuarioRequestValidacionTest | Un usuario con todos los datos correctos no tiene errores
-[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 17 -> valida: false
-[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 18 -> valida: true
-[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 100 -> valida: true
-[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 101 -> valida: false
-[OK   ] UsuarioRequestValidacionTest | Campos nulos generan error de obligatorio en los tres campos
 [OK   ] UsuarioServiceTest           | limpiar() borra los usuarios y reinicia la secuencia de ids
 [OK   ] UsuarioServiceTest           | Al consultar usuarios > lanza UsuarioNoEncontradoException si el id no existe
 [OK   ] UsuarioServiceTest           | Al consultar usuarios > encuentra un usuario existente por su id
 [OK   ] UsuarioServiceTest           | Al consultar usuarios > devuelve una lista vacia cuando no hay usuarios
 [OK   ] UsuarioServiceTest           | Al crear un usuario > asigna ids consecutivos empezando en 1
 [OK   ] UsuarioServiceTest           | Al crear un usuario > rechaza un email repetido aunque cambie mayusculas/minusculas
-[OK   ] UsuarioServiceTest           | Al crear un usuario > quita los espacios al inicio y al final del nombre y el email
+[OK   ] UsuarioRequestValidacionTest | Los espacios al inicio y al final se quitan antes de validar
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo.com" -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana.perez+1@uni.edu.co" -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana-correo" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "@correo.com" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Nombre vacio, solo espacios o corto rodeado de espacios es invalido > nombre "" -> invalido
+[OK   ] UsuarioRequestValidacionTest | Nombre vacio, solo espacios o corto rodeado de espacios es invalido > nombre "   " -> invalido
+[OK   ] UsuarioRequestValidacionTest | Nombre vacio, solo espacios o corto rodeado de espacios es invalido > nombre "  A  " -> invalido
+[OK   ] UsuarioRequestValidacionTest | Nombre vacio, solo espacios o corto rodeado de espacios es invalido > nombre " Al " -> invalido
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 2 caracteres -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 3 caracteres -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 60 caracteres -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 61 caracteres -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Un usuario con todos los datos correctos no tiene errores
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad -1 -> valida: false
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 17 -> valida: false
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 18 -> valida: true
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 100 -> valida: true
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 101 -> valida: false
+[OK   ] UsuarioRequestValidacionTest | Campos nulos generan error de obligatorio en los tres campos
+[OK   ] UsuarioApiTest               | GET por id inexistente responde 404
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre vacio
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre muy corto
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre corto rodeado de espacios
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre solo con espacios
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email con formato invalido
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email vacio
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad menor a 18
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad mayor a 100
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad nula
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad negativa
+[OK   ] UsuarioApiTest               | POST con email ya registrado responde 409
+[OK   ] UsuarioApiTest               | GET lista todos los usuarios y responde 200
+[OK   ] UsuarioApiTest               | Metodo HTTP no soportado responde 405 con el formato de error de la API
+[OK   ] UsuarioApiTest               | POST con JSON mal formado responde 400
+[OK   ] UsuarioApiTest               | POST con edad que no es un numero entero responde 400 > Edad decimal (18.9)
+[OK   ] UsuarioApiTest               | POST con edad que no es un numero entero responde 400 > Edad como texto ("25")
+[OK   ] UsuarioApiTest               | GET por id devuelve el usuario creado y responde 200
+[OK   ] UsuarioApiTest               | POST con datos validos crea el usuario y responde 201
+[OK   ] UsuarioApiTest               | Content-Type distinto de JSON responde 415 con el formato de error de la API

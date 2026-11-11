@@ -2,6 +2,8 @@ package co.edu.calidad.taller.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpMediaTypeNotSupportedException;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -34,10 +36,26 @@ public class ManejadorErrores {
         return respuesta(HttpStatus.BAD_REQUEST, "Datos invalidos", errores);
     }
 
-    /** 400: el cuerpo no es un JSON valido o un campo tiene un tipo incorrecto. */
+    /**
+     * 400: el cuerpo no es un JSON valido o un campo tiene un tipo incorrecto
+     * (por ejemplo edad 18.9 o "25": ver application.properties, ya no se convierten en silencio).
+     */
     @ExceptionHandler({HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class})
     public ResponseEntity<ErrorRespuesta> peticionMalFormada(Exception ex) {
-        return respuesta(HttpStatus.BAD_REQUEST, "La peticion esta mal formada", Map.of());
+        return respuesta(HttpStatus.BAD_REQUEST,
+                "La peticion esta mal formada o tiene un tipo de dato invalido (la edad debe ser un numero entero)", Map.of());
+    }
+
+    /** 405: metodo HTTP no soportado (ej: DELETE). Antes respondia con el formato por defecto de Spring. */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public ResponseEntity<ErrorRespuesta> metodoNoSoportado(HttpRequestMethodNotSupportedException ex) {
+        return respuesta(HttpStatus.METHOD_NOT_ALLOWED, "Metodo " + ex.getMethod() + " no permitido en esta ruta", Map.of());
+    }
+
+    /** 415: el cuerpo no es JSON (ej: text/plain). Antes respondia con el formato por defecto de Spring. */
+    @ExceptionHandler(HttpMediaTypeNotSupportedException.class)
+    public ResponseEntity<ErrorRespuesta> tipoNoSoportado(HttpMediaTypeNotSupportedException ex) {
+        return respuesta(HttpStatus.UNSUPPORTED_MEDIA_TYPE, "Tipo de contenido no soportado: use application/json", Map.of());
     }
 
     /** 404: el usuario buscado no existe. */
