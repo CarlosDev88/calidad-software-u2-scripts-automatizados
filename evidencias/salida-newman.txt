@@ -1,0 +1,73 @@
+newman
+
+Taller Scripts Automatizados - API Usuarios
+
+→ 01 - Crear usuario valido (201)
+  POST http://localhost:8080/api/usuarios [201 Created, 274B, 193ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 201 Created
+  ✓  Devuelve el usuario con id y los datos enviados
+  ✓  Incluye el header Location
+
+→ 02 - Obtener usuario por id (200)
+  GET http://localhost:8080/api/usuarios/1 [200 OK, 242B, 15ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 200 OK
+  ✓  Es el usuario creado en la peticion anterior
+
+→ 03 - Listar usuarios (200)
+  GET http://localhost:8080/api/usuarios [200 OK, 244B, 6ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 200 OK
+  ✓  Devuelve una lista con al menos un usuario
+
+→ 04 - Crear usuario con email invalido (400)
+  POST http://localhost:8080/api/usuarios [400 Bad Request, 244B, 31ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 400 Bad Request
+  ✓  Indica el error en el campo email
+
+→ 05 - Crear usuario menor de edad (400)
+  POST http://localhost:8080/api/usuarios [400 Bad Request, 228B, 10ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 400 Bad Request
+  ✓  Indica el error en el campo edad
+
+→ 06 - Crear usuario con email duplicado (409)
+  POST http://localhost:8080/api/usuarios [409 Conflict, 322B, 19ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 409 Conflict
+  ✓  Indica que el email ya esta registrado
+
+→ 07 - Obtener usuario inexistente (404)
+  GET http://localhost:8080/api/usuarios/999999 [404 Not Found, 245B, 9ms]
+  ✓  Responde en menos de 2 segundos
+  ✓  Responde en formato JSON
+  ✓  Status 404 Not Found
+  ✓  El mensaje indica el id buscado
+
+┌─────────────────────────┬───────────────────┬──────────────────┐
+│                         │          executed │           failed │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              iterations │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│                requests │                 7 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│            test-scripts │                14 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│      prerequest-scripts │                 1 │                0 │
+├─────────────────────────┼───────────────────┼──────────────────┤
+│              assertions │                29 │                0 │
+├─────────────────────────┴───────────────────┴──────────────────┤
+│ total run duration: 542ms                                      │
+├────────────────────────────────────────────────────────────────┤
+│ total data received: 646B (approx)                             │
+├────────────────────────────────────────────────────────────────┤
+│ average response time: 40ms [min: 6ms, max: 193ms, s.d.: 62ms] │
+└────────────────────────────────────────────────────────────────┘

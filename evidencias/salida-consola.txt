@@ -1,87 +1,12 @@
 [INFO] Scanning for projects...
 [INFO] 
 [INFO] ------------< co.edu.calidad:taller-scripts-automatizados >-------------
-[INFO] Building Taller Scripts Automatizados 1.0.0
+[INFO] Building Pruebas automatizadas - Calidad de Software U2 1.0.0
 [INFO]   from pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.6/micrometer-observation-1.13.6.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.6/micrometer-observation-1.13.6.pom (3.8 kB at 8.5 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.6/micrometer-commons-1.13.6.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.6/micrometer-commons-1.13.6.pom (3.4 kB at 78 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.pom (19 kB at 282 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/logging-parent/1.0.1.Final/logging-parent-1.0.1.Final.pom (6.0 kB at 85 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.pom (7.0 kB at 176 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.pom (16 kB at 300 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-parent/1.14.19/byte-buddy-parent-1.14.19.pom (62 kB at 830 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.pom (10 kB at 139 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jspecify/jspecify/0.3.0/jspecify-0.3.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jspecify/jspecify/0.3.0/jspecify-0.3.0.pom (1.7 kB at 44 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.37.0/opentelemetry-api-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.37.0/opentelemetry-api-1.37.0.pom (1.8 kB at 39 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.37.0/opentelemetry-context-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.37.0/opentelemetry-context-1.37.0.pom (1.6 kB at 32 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.37.0/opentelemetry-exporter-logging-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.37.0/opentelemetry-exporter-logging-1.37.0.pom (2.0 kB at 21 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.37.0/opentelemetry-sdk-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.37.0/opentelemetry-sdk-1.37.0.pom (2.5 kB at 62 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.37.0/opentelemetry-sdk-common-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.37.0/opentelemetry-sdk-common-1.37.0.pom (1.8 kB at 36 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.37.0/opentelemetry-sdk-trace-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.37.0/opentelemetry-sdk-trace-1.37.0.pom (2.0 kB at 47 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.37.0/opentelemetry-sdk-metrics-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.37.0/opentelemetry-sdk-metrics-1.37.0.pom (2.2 kB at 47 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.37.0-alpha/opentelemetry-api-incubator-1.37.0-alpha.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.37.0-alpha/opentelemetry-api-incubator-1.37.0-alpha.pom (1.8 kB at 38 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.37.0/opentelemetry-sdk-logs-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.37.0/opentelemetry-sdk-logs-1.37.0.pom (2.2 kB at 57 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.37.0/opentelemetry-sdk-extension-autoconfigure-spi-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.37.0/opentelemetry-sdk-extension-autoconfigure-spi-1.37.0.pom (1.8 kB at 54 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.37.0/opentelemetry-sdk-extension-autoconfigure-1.37.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.37.0/opentelemetry-sdk-extension-autoconfigure-1.37.0.pom (2.2 kB at 52 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.6/micrometer-observation-1.13.6.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-observation/1.13.6/micrometer-observation-1.13.6.jar (72 kB at 1.4 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.6/micrometer-commons-1.13.6.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jboss/logging/jboss-logging/3.5.3.Final/jboss-logging-3.5.3.Final.jar (59 kB at 987 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/fasterxml/classmate/1.7.0/classmate-1.7.0.jar (69 kB at 551 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jspecify/jspecify/0.3.0/jspecify-0.3.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/micrometer/micrometer-commons/1.13.6/micrometer-commons-1.13.6.jar (48 kB at 317 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.37.0/opentelemetry-api-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/slf4j/slf4j-api/2.0.16/slf4j-api-2.0.16.jar (69 kB at 429 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.37.0/opentelemetry-context-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar (263 kB at 1.6 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.37.0/opentelemetry-exporter-logging-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jspecify/jspecify/0.3.0/jspecify-0.3.0.jar (2.9 kB at 17 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.37.0/opentelemetry-sdk-common-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-exporter-logging/1.37.0/opentelemetry-exporter-logging-1.37.0.jar (13 kB at 47 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.37.0/opentelemetry-sdk-extension-autoconfigure-spi-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-common/1.37.0/opentelemetry-sdk-common-1.37.0.jar (48 kB at 152 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.37.0/opentelemetry-sdk-extension-autoconfigure-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api/1.37.0/opentelemetry-api-1.37.0.jar (139 kB at 417 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.37.0-alpha/opentelemetry-api-incubator-1.37.0-alpha.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-context/1.37.0/opentelemetry-context-1.37.0.jar (47 kB at 137 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.37.0/opentelemetry-sdk-trace-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure-spi/1.37.0/opentelemetry-sdk-extension-autoconfigure-spi-1.37.0.jar (17 kB at 50 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.37.0/opentelemetry-sdk-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-extension-autoconfigure/1.37.0/opentelemetry-sdk-extension-autoconfigure-1.37.0.jar (45 kB at 118 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.37.0/opentelemetry-sdk-metrics-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-api-incubator/1.37.0-alpha/opentelemetry-api-incubator-1.37.0-alpha.jar (40 kB at 102 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.37.0/opentelemetry-sdk-logs-1.37.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk/1.37.0/opentelemetry-sdk-1.37.0.jar (6.8 kB at 16 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-trace/1.37.0/opentelemetry-sdk-trace-1.37.0.jar (122 kB at 293 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-logs/1.37.0/opentelemetry-sdk-logs-1.37.0.jar (50 kB at 110 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/opentelemetry/opentelemetry-sdk-metrics/1.37.0/opentelemetry-sdk-metrics-1.37.0.jar (304 kB at 600 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/net/bytebuddy/byte-buddy/1.14.19/byte-buddy-1.14.19.jar (4.2 MB at 5.2 MB/s)
+[INFO] 
+[INFO] --- jacoco:0.8.12:prepare-agent (preparar-agente) @ taller-scripts-automatizados ---
+[INFO] argLine set to -javaagent:/root/.m2/repository/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar=destfile=/home/claude/taller-automatizacion/target/jacoco.exec,excludes=co/edu/calidad/taller/TallerApplication.class
 [INFO] 
 [INFO] --- resources:3.3.1:resources (default-resources) @ taller-scripts-automatizados ---
 [INFO] Copying 1 resource from src/main/resources to target/classes
@@ -92,51 +17,21 @@
 [INFO] Compiling 9 source files with javac [debug parameters release 21] to target/classes
 [INFO] 
 [INFO] --- resources:3.3.1:testResources (default-testResources) @ taller-scripts-automatizados ---
-[INFO] skip non existing resourceDirectory /app/src/test/resources
+[INFO] skip non existing resourceDirectory /home/claude/taller-automatizacion/src/test/resources
 [INFO] 
 [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ taller-scripts-automatizados ---
 [INFO] Recompiling the module because of changed dependency.
-[INFO] Compiling 9 source files with javac [debug parameters release 21] to target/test-classes
+[INFO] Compiling 12 source files with javac [debug parameters release 21] to target/test-classes
 [INFO] 
 [INFO] --- surefire:3.2.5:test (default-test) @ taller-scripts-automatizados ---
 [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.pom (4.7 kB at 123 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-providers/3.2.5/surefire-providers-3.2.5.pom (2.6 kB at 65 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.pom (2.8 kB at 69 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.pom (3.0 kB at 76 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.pom (3.2 kB at 91 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.pom (1.7 kB at 47 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.pom (2.8 kB at 81 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/surefire-junit-platform/3.2.5/surefire-junit-platform-3.2.5.jar (27 kB at 679 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar (7.7 kB at 219 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/surefire/common-java5/3.2.5/common-java5-3.2.5.jar (18 kB at 358 kB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-commons/1.9.3/junit-platform-commons-1.9.3.jar (103 kB at 1.5 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.9.3/junit-platform-launcher-1.9.3.jar (169 kB at 2.1 MB/s)
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-engine/1.9.3/junit-platform-engine-1.9.3.jar (189 kB at 2.0 MB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.5/junit-platform-launcher-1.10.5.pom
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.5/junit-platform-launcher-1.10.5.pom (3.0 kB at 82 kB/s)
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.5/junit-platform-launcher-1.10.5.jar
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/junit/platform/junit-platform-launcher/1.10.5/junit-platform-launcher-1.10.5.jar (184 kB at 2.7 MB/s)
 [INFO] 
 [INFO] -------------------------------------------------------
 [INFO]  T E S T S
 [INFO] -------------------------------------------------------
 [INFO] Running co.edu.calidad.taller.web.RegistroFormularioTest
-20:47:48.611 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [co.edu.calidad.taller.web.RegistroFormularioTest]: RegistroFormularioTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-20:47:48.700 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration co.edu.calidad.taller.TallerApplication for test class co.edu.calidad.taller.web.RegistroFormularioTest
+17:12:59.303 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [co.edu.calidad.taller.web.RegistroFormularioTest]: RegistroFormularioTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+17:12:59.584 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration co.edu.calidad.taller.TallerApplication for test class co.edu.calidad.taller.web.RegistroFormularioTest
 
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
@@ -147,58 +42,146 @@
 
  :: Spring Boot ::                (v3.3.5)
 
-2026-11-03T20:47:49.059Z  INFO 85 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : Starting RegistroFormularioTest using Java 21.0.7 with PID 85 (started by root in /app)
-2026-11-03T20:47:49.060Z  INFO 85 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : No active profile set, falling back to 1 default profile: "default"
-2026-11-03T20:47:50.046Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
-2026-11-03T20:47:50.061Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2026-11-03T20:47:50.062Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
-2026-11-03T20:47:50.105Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2026-11-03T20:47:50.106Z  INFO 85 --- [taller-scripts-automatizados] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1028 ms
-2026-11-03T20:47:50.571Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 46179 (http) with context path '/'
-2026-11-03T20:47:50.579Z  INFO 85 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : Started RegistroFormularioTest in 1.751 seconds (process running for 2.606)
+2026-11-11T17:13:00.951-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : Starting RegistroFormularioTest using Java 21.0.12.1 with PID 4197 (started by root in /home/claude/taller-automatizacion)
+2026-11-11T17:13:00.953-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : No active profile set, falling back to 1 default profile: "default"
+2026-11-11T17:13:03.255-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 0 (http)
+2026-11-11T17:13:03.281-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-11-11T17:13:03.282-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-11-11T17:13:03.377-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-11-11T17:13:03.379-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2380 ms
+2026-11-11T17:13:04.140-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 33389 (http) with context path '/'
+2026-11-11T17:13:04.154-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.web.RegistroFormularioTest  : Started RegistroFormularioTest in 4.055 seconds (process running for 6.749)
 OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
 WARNING: A Java agent has been loaded dynamically (/root/.m2/repository/net/bytebuddy/byte-buddy-agent/1.14.19/byte-buddy-agent-1.14.19.jar)
 WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
 WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
 WARNING: Dynamic loading of agents will be disallowed by default in a future release
-2026-11-03T20:47:51.398Z  INFO 85 --- [taller-scripts-automatizados] [           main] o.o.s.r.t.o.OpenTelemetryTracer          : Using OpenTelemetry for tracing
-2026-11-03T20:47:52.672Z  INFO 85 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2026-11-03T20:47:52.672Z  INFO 85 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2026-11-03T20:47:52.687Z  INFO 85 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Email con formato invalido
-[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Nombre vacio
-[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Nombre muy corto
-[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Edad menor a 18
-[OK   ] RegistroFormularioTest   | Datos invalidos muestran el error en el campo correspondiente > Edad mayor a 100
-[OK   ] RegistroFormularioTest   | Registro con datos validos muestra mensaje de exito y limpia el formulario
-[OK   ] RegistroFormularioTest   | Enviar el formulario vacio muestra error en los tres campos
-[OK   ] RegistroFormularioTest   | Registrar un email que ya existe muestra error de duplicado
-[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 14.29 s -- in co.edu.calidad.taller.web.RegistroFormularioTest
+2026-11-11T17:13:07.088-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:07.096-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+2026-11-11T17:13:07.469-05:00  INFO 4197 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-11-11T17:13:07.470-05:00  INFO 4197 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-11-11T17:13:07.473-05:00  INFO 4197 --- [taller-scripts-automatizados] [o-auto-1-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+[OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Email con formato invalido
+2026-11-11T17:13:10.486-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:10.487-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Nombre vacio
+2026-11-11T17:13:12.982-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:12.982-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Nombre muy corto
+2026-11-11T17:13:14.732-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:14.732-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Edad menor a 18
+2026-11-11T17:13:16.662-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:16.669-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Edad mayor a 100
+2026-11-11T17:13:18.298-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:18.298-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Registro con datos validos muestra mensaje de exito y limpia el formulario
+2026-11-11T17:13:20.107-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:20.109-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Enviar el formulario vacio muestra error en los tres campos
+2026-11-11T17:13:21.532-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.devtools.CdpVersionFinder   : Unable to find CDP implementation matching 153
+2026-11-11T17:13:21.532-05:00  WARN 4197 --- [taller-scripts-automatizados] [           main] o.o.selenium.chromium.ChromiumDriver     : Unable to find version of CDP to use for 153.0.8010.12. You may need to include a dependency on a specific version of the CDP using something similar to `org.seleniumhq.selenium:selenium-devtools-v86:4.25.0` where the version ("v86") matches the version of the chromium-based browser you're using and the version number of the artifact is the same as Selenium's.
+[OK   ] RegistroFormularioTest       | Registrar un email que ya existe muestra error de duplicado
+[INFO] Tests run: 8, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 24.16 s -- in co.edu.calidad.taller.web.RegistroFormularioTest
 [INFO] Running co.edu.calidad.taller.api.UsuarioApiTest
-2026-11-03T20:48:02.754Z  INFO 85 --- [taller-scripts-automatizados] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [co.edu.calidad.taller.api.UsuarioApiTest]: UsuarioApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
-2026-11-03T20:48:02.762Z  INFO 85 --- [taller-scripts-automatizados] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration co.edu.calidad.taller.TallerApplication for test class co.edu.calidad.taller.api.UsuarioApiTest
-[OK   ] UsuarioApiTest           | GET por id inexistente responde 404
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Nombre vacio
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Nombre muy corto
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Email con formato invalido
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Email vacio
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad menor a 18
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad mayor a 100
-[OK   ] UsuarioApiTest           | POST con datos invalidos responde 400 indicando el campo > Edad nula
-[OK   ] UsuarioApiTest           | POST con email ya registrado responde 409
-[OK   ] UsuarioApiTest           | GET lista todos los usuarios y responde 200
-[OK   ] UsuarioApiTest           | POST con JSON mal formado responde 400
-[OK   ] UsuarioApiTest           | GET por id devuelve el usuario creado y responde 200
-[OK   ] UsuarioApiTest           | POST con datos validos crea el usuario y responde 201
-[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.297 s -- in co.edu.calidad.taller.api.UsuarioApiTest
+2026-11-11T17:13:23.098-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [co.edu.calidad.taller.api.UsuarioApiTest]: UsuarioApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-11T17:13:23.115-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration co.edu.calidad.taller.TallerApplication for test class co.edu.calidad.taller.api.UsuarioApiTest
+[OK   ] UsuarioApiTest               | GET por id inexistente responde 404
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre vacio
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Nombre muy corto
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email con formato invalido
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Email vacio
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad menor a 18
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad mayor a 100
+[OK   ] UsuarioApiTest               | POST con datos invalidos responde 400 indicando el campo > Edad nula
+[OK   ] UsuarioApiTest               | POST con email ya registrado responde 409
+[OK   ] UsuarioApiTest               | GET lista todos los usuarios y responde 200
+[OK   ] UsuarioApiTest               | POST con JSON mal formado responde 400
+[OK   ] UsuarioApiTest               | GET por id devuelve el usuario creado y responde 200
+[OK   ] UsuarioApiTest               | POST con datos validos crea el usuario y responde 201
+[INFO] Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.569 s -- in co.edu.calidad.taller.api.UsuarioApiTest
+[INFO] Running co.edu.calidad.taller.unit.UsuarioControllerTest
+2026-11-11T17:13:23.709-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [co.edu.calidad.taller.unit.UsuarioControllerTest]: UsuarioControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2026-11-11T17:13:23.791-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration co.edu.calidad.taller.TallerApplication for test class co.edu.calidad.taller.unit.UsuarioControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::                (v3.3.5)
+
+2026-11-11T17:13:23.852-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.unit.UsuarioControllerTest  : Starting UsuarioControllerTest using Java 21.0.12.1 with PID 4197 (started by root in /home/claude/taller-automatizacion)
+2026-11-11T17:13:23.852-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.unit.UsuarioControllerTest  : No active profile set, falling back to 1 default profile: "default"
+2026-11-11T17:13:24.745-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2026-11-11T17:13:24.745-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2026-11-11T17:13:24.746-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 1 ms
+2026-11-11T17:13:24.793-05:00  INFO 4197 --- [taller-scripts-automatizados] [           main] c.e.c.taller.unit.UsuarioControllerTest  : Started UsuarioControllerTest in 0.993 seconds (process running for 27.389)
+[OK   ] UsuarioControllerTest        | POST invalido responde 400 y NUNCA llama al servicio
+[OK   ] UsuarioControllerTest        | GET con id no numerico responde 400
+[OK   ] UsuarioControllerTest        | GET lista devuelve lo que entrega el servicio
+[OK   ] UsuarioControllerTest        | Si el servicio lanza EmailDuplicadoException responde 409
+[OK   ] UsuarioControllerTest        | POST valido llama al servicio una vez y responde 201 con Location
+[OK   ] UsuarioControllerTest        | Si el servicio lanza UsuarioNoEncontradoException responde 404
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.674 s -- in co.edu.calidad.taller.unit.UsuarioControllerTest
+[INFO] Running co.edu.calidad.taller.unit.UsuarioRequestValidacionTest
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo.com" -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana.perez+1@uni.edu.co" -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana-correo" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "@correo.com" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Particiones de equivalencia del email > email "ana@correo" -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 2 caracteres -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 3 caracteres -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 60 caracteres -> valido: true
+[OK   ] UsuarioRequestValidacionTest | Limites del largo del nombre (3 a 60 caracteres) > nombre de 61 caracteres -> valido: false
+[OK   ] UsuarioRequestValidacionTest | Un usuario con todos los datos correctos no tiene errores
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 17 -> valida: false
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 18 -> valida: true
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 100 -> valida: true
+[OK   ] UsuarioRequestValidacionTest | Limites de la edad (18 a 100) > edad 101 -> valida: false
+[OK   ] UsuarioRequestValidacionTest | Campos nulos generan error de obligatorio en los tres campos
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s -- in co.edu.calidad.taller.unit.UsuarioRequestValidacionTest
+[INFO] Running co.edu.calidad.taller.unit.UsuarioServiceTest
+[OK   ] UsuarioServiceTest           | limpiar() borra los usuarios y reinicia la secuencia de ids
+[INFO] Running co.edu.calidad.taller.unit.UsuarioServiceTest$Consultar
+[OK   ] UsuarioServiceTest           | Al consultar usuarios > lanza UsuarioNoEncontradoException si el id no existe
+[OK   ] UsuarioServiceTest           | Al consultar usuarios > encuentra un usuario existente por su id
+[OK   ] UsuarioServiceTest           | Al consultar usuarios > devuelve una lista vacia cuando no hay usuarios
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.026 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest$Consultar
+[INFO] Running co.edu.calidad.taller.unit.UsuarioServiceTest$Crear
+[OK   ] UsuarioServiceTest           | Al crear un usuario > asigna ids consecutivos empezando en 1
+[OK   ] UsuarioServiceTest           | Al crear un usuario > rechaza un email repetido aunque cambie mayusculas/minusculas
+[OK   ] UsuarioServiceTest           | Al crear un usuario > quita los espacios al inicio y al final del nombre y el email
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest$Crear
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.061 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest
 [INFO] 
 [INFO] Results:
 [INFO] 
-[INFO] Tests run: 21, Failures: 0, Errors: 0, Skipped: 0
+[INFO] Tests run: 50, Failures: 0, Errors: 0, Skipped: 0
 [INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ taller-scripts-automatizados ---
+[INFO] Building jar: /home/claude/taller-automatizacion/target/taller-scripts-automatizados-1.0.0.jar
+[INFO] 
+[INFO] --- spring-boot:3.3.5:repackage (repackage) @ taller-scripts-automatizados ---
+[INFO] Replacing main artifact /home/claude/taller-automatizacion/target/taller-scripts-automatizados-1.0.0.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /home/claude/taller-automatizacion/target/taller-scripts-automatizados-1.0.0.jar.original
+[INFO] 
+[INFO] --- jacoco:0.8.12:report (reporte) @ taller-scripts-automatizados ---
+[INFO] Loading execution data file /home/claude/taller-automatizacion/target/jacoco.exec
+[INFO] Analyzed bundle 'Pruebas automatizadas - Calidad de Software U2' with 8 classes
+[INFO] 
+[INFO] --- jacoco:0.8.12:check (verificar-cobertura) @ taller-scripts-automatizados ---
+[INFO] Loading execution data file /home/claude/taller-automatizacion/target/jacoco.exec
+[INFO] Analyzed bundle 'taller-scripts-automatizados' with 8 classes
+[INFO] All coverage checks have been met.
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  22.737 s
-[INFO] Finished at: 2026-11-03T20:48:03Z
+[INFO] Total time:  34.206 s
+[INFO] Finished at: 2026-11-11T17:13:26-05:00
 [INFO] ------------------------------------------------------------------------

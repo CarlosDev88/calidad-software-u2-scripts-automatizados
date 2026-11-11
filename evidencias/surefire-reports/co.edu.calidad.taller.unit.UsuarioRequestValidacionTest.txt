@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: co.edu.calidad.taller.unit.UsuarioRequestValidacionTest
+-------------------------------------------------------------------------------
+Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.258 s -- in co.edu.calidad.taller.unit.UsuarioRequestValidacionTest

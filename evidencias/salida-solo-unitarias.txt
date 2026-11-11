@@ -1,0 +1,8 @@
+[INFO] Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 4.066 s -- in co.edu.calidad.taller.unit.UsuarioControllerTest
+[INFO] Tests run: 16, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.265 s -- in co.edu.calidad.taller.unit.UsuarioRequestValidacionTest
+[INFO] Tests run: 4, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.018 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest$Consultar
+[INFO] Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.014 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest$Crear
+[INFO] Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.071 s -- in co.edu.calidad.taller.unit.UsuarioServiceTest
+[INFO] Tests run: 29, Failures: 0, Errors: 0, Skipped: 0
+[INFO] BUILD SUCCESS
+[INFO] Total time:  6.879 s

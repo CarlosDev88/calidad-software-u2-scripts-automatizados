@@ -1,17 +1,30 @@
-# Taller: scripts de prueba automatizados para servicios REST y formularios web
+# Pruebas automatizadas: JUnit, Selenium y Postman
 
-**Asignatura:** Prueba y Calidad de Software — Unidad 2, AA1
-**Estudiante:** Carlos Rueda
+**Asignatura:** Prueba y Calidad de Software, Unidad 2
+**Estudiante:** Carlos Arturo Rueda Calier
 
-Proyecto con una aplicación pequeña (API REST de usuarios + formulario web de registro) y sus scripts de prueba automatizados:
+## Evolución del proyecto
 
-| Área | Herramienta | Archivo principal |
-|---|---|---|
-| API REST | JUnit 5 + **TestRestTemplate** | `src/test/java/.../api/UsuarioApiTest.java` |
-| API REST | **Postman** (se corre con Newman) | `postman/usuarios.postman_collection.json` |
-| Formulario web | JUnit 5 + **Selenium WebDriver** | `src/test/java/.../web/RegistroFormularioTest.java` |
+El repositorio creció en dos actividades. El historial de git conserva cada etapa.
 
-Todo corre en **Docker** con versiones fijas, así funciona igual en cualquier máquina sin instalar Java, Maven ni Chrome.
+| Etapa | Actividad | Qué se agregó | Informe |
+|---|---|---|---|
+| 1 | AA1: Diseño de scripts para servicios REST y formularios web | App de usuarios, pruebas de API (TestRestTemplate), formulario (Selenium), colección Postman, Docker | `Taller_Scripts_Automatizados_CarlosRueda.pdf` |
+| 2 | AA2: Automatización de pruebas con JUnit, Selenium o Postman | Pruebas unitarias (JUnit 5 + Mockito), valores límite, etiquetas por nivel, cobertura JaCoCo con mínimo del 80 %, integración continua con GitHub Actions, guía paso a paso | `Taller_Automatizacion_CarlosRueda.pdf` |
+
+Suite de pruebas automatizadas para una aplicación pequeña de registro de usuarios: una API REST y un formulario web. Cubre los tres niveles de prueba y queda integrada en un pipeline de integración continua.
+
+| Nivel | Herramienta | Qué prueba | Clases |
+|---|---|---|---|
+| Unitaria | JUnit 5 | Lógica de negocio y reglas de validación (valores límite) | `unit/UsuarioServiceTest`, `unit/UsuarioRequestValidacionTest` |
+| Unitaria (aislada) | JUnit 5 + **Mockito** + MockMvc | Controlador REST con el servicio simulado | `unit/UsuarioControllerTest` |
+| Integración / API | JUnit 5 + **TestRestTemplate** | Endpoints REST reales | `api/UsuarioApiTest` |
+| Integración / API | **Postman** + Newman | Endpoints REST desde fuera de la app | `postman/usuarios.postman_collection.json` |
+| Sistema / UI | JUnit 5 + **Selenium WebDriver** | Formulario web en Chrome | `web/RegistroFormularioTest` |
+| Cobertura | **JaCoCo** | % de código ejecutado por las pruebas (mínimo 80 %) | `pom.xml` |
+| CI | **GitHub Actions** | Corre todo en cada push | `.github/workflows/pruebas.yml` |
+
+La guía detallada del proceso está en **[GUIA_PASO_A_PASO.md](GUIA_PASO_A_PASO.md)**.
 
 ## Versiones
 
@@ -19,114 +32,75 @@ Todo corre en **Docker** con versiones fijas, así funciona igual en cualquier m
 |---|---|
 | Java | 21 (Eclipse Temurin) |
 | Maven | 3.9.9 |
-| Spring Boot | 3.3.5 |
-| JUnit | 5 (incluido en Spring Boot) |
+| Spring Boot | 3.3.5 (incluye JUnit 5, Mockito, AssertJ) |
 | Selenium | 4.25.0 |
-| Chrome | imagen `selenium/standalone-chrome:4.25.0-20240922` |
-| Newman | 6.1.3 (imagen `postman/newman:6.1.3-alpine`) |
-
-## Requisito
-
-Solo **Docker Desktop** encendido.
+| Chrome (Docker) | `selenium/standalone-chrome:4.25.0-20240922` |
+| JaCoCo | 0.8.12 |
+| Newman | `postman/newman:6.1.3-alpine` |
 
 ## Cómo correrlo
 
+**Con Docker** (solo requiere Docker Desktop):
+
 ```bash
-# 1. Pruebas de API (TestRestTemplate) y formulario (Selenium)
+# Todas las pruebas JUnit (unitarias + API + Selenium) y la cobertura
 docker compose up --build --exit-code-from tests
 
-# 2. Pruebas de la colección Postman (Newman)
+# Colección Postman con Newman
 docker compose --profile postman run --rm newman
 
-# 3. (Opcional) Usar la app a mano: http://localhost:8080/registro.html
+# Usar la app a mano: http://localhost:8080/registro.html
 docker compose --profile demo up --build app
 
 # Apagar todo
 docker compose --profile demo --profile postman down
 ```
 
-Mientras corren las pruebas de Selenium se puede ver el navegador en vivo en **http://localhost:7900** (clave: `secret`).
+**Sin Docker** (Java 21, Maven y Chrome instalados):
 
-### Sin Docker (opcional)
+```bash
+mvn verify                  # todo + cobertura (falla si baja del 80 %)
+mvn test -Dgroups=unit      # solo unitarias (segundos)
+mvn test -Dgroups=api       # solo API
+mvn test -Dgroups=ui        # solo Selenium
+```
 
-Con Java 21, Maven y Chrome instalados: `mvn test`. Para ver el navegador: `HEADLESS=false mvn test`.
+Mientras corre Selenium en Docker, el navegador se ve en vivo en http://localhost:7900 (clave `secret`).
 
-## Evidencias generadas
-
-Al terminar, la carpeta `evidencias/` contiene:
+## Evidencias (`evidencias/`)
 
 | Archivo | Contenido |
 |---|---|
-| `resultados-pruebas.txt` | Lista de cada prueba con su resultado (OK / FALLO) |
-| `salida-consola.txt` | Salida completa de Maven |
-| `surefire-reports/` | Reportes de JUnit (txt y xml) |
-| `capturas/*.png` | Capturas del formulario: datos de entrada y resultado de cada caso |
+| `resultados-pruebas.txt` | Cada prueba con su resultado (OK / FALLO) |
+| `salida-consola.txt` | Salida completa de `mvn verify` |
+| `salida-solo-unitarias.txt` | Ejecución de solo las pruebas unitarias (`-Dgroups=unit`) |
+| `salida-newman.txt` | Salida de consola de Newman |
+| `surefire-reports/` | Reportes JUnit (txt y xml, con tiempos) |
+| `cobertura/` | Cobertura JaCoCo (`jacoco.csv`, `jacoco.xml` y captura del reporte). El reporte HTML completo queda en `target/site/jacoco/index.html` |
+| `capturas/*.png` | Capturas de Selenium: datos de entrada y resultado de cada caso |
 | `newman-resultados.xml` | Resultado de la colección Postman |
 
-## La aplicación bajo prueba
+## Aplicación bajo prueba
 
 | Método | Endpoint | Respuestas |
 |---|---|---|
 | GET | `/api/usuarios` | 200 lista |
-| GET | `/api/usuarios/{id}` | 200 usuario · 404 no existe |
-| POST | `/api/usuarios` | 201 creado · 400 datos inválidos · 409 email duplicado |
+| GET | `/api/usuarios/{id}` | 200 · 404 no existe · 400 id no numérico |
+| POST | `/api/usuarios` | 201 creado · 400 datos inválidos / JSON mal formado · 409 email duplicado |
 
-Reglas de validación: nombre obligatorio (3 a 60 caracteres), email obligatorio con formato válido, edad obligatoria entre 18 y 100, email único.
-
-Formulario: `http://localhost:8080/registro.html`. Envía los datos a la API y muestra los errores debajo de cada campo.
-
-## Casos de prueba
-
-### API — `UsuarioApiTest` (TestRestTemplate)
-
-| # | Caso | Entrada | Resultado esperado |
-|---|---|---|---|
-| 1 | Crear usuario válido | nombre, email, edad válidos | 201, id generado, header `Location` |
-| 2 | Listar usuarios | 2 usuarios creados | 200, lista de 2 |
-| 3 | Buscar por id | id existente | 200, mismo usuario |
-| 4 | Buscar inexistente | id 999 | 404 |
-| 5–11 | Datos inválidos (parametrizado) | nombre vacío / corto, email inválido / vacío, edad < 18 / > 100 / nula | 400 con el error en el campo correcto, nada guardado |
-| 12 | Email duplicado | mismo email dos veces | 409 |
-| 13 | JSON mal formado | cuerpo JSON roto | 400 |
-
-### API — Colección Postman
-
-7 peticiones en orden (crear → consultar → listar → errores 400 → 409 → 404), con pruebas en cada una y una prueba común a toda la colección (tiempo de respuesta < 2 s y respuesta JSON).
-
-### Formulario — `RegistroFormularioTest` (Selenium)
-
-| # | Caso | Entrada | Resultado esperado |
-|---|---|---|---|
-| 1 | Registro exitoso | datos válidos | mensaje de éxito y formulario limpio |
-| 2–6 | Datos inválidos (parametrizado) | email inválido, nombre vacío, nombre corto, edad 15, edad 120 | mensaje de error bajo el campo correcto |
-| 7 | Formulario vacío | nada | error en los 3 campos |
-| 8 | Email duplicado | mismo email dos veces | "Este email ya está registrado" |
-
-## Buenas prácticas aplicadas
-
-- **Page Object Model** (`RegistroPage`): los localizadores y acciones del formulario están en un solo lugar.
-- **Datos de prueba centralizados** (`DatosPrueba`) y **pruebas parametrizadas** (`@ParameterizedTest`) para reutilizar un mismo script con muchos datos.
-- **Patrón AAA** (preparar, ejecutar, verificar) y nombres descriptivos con `@DisplayName`.
-- **Pruebas independientes**: cada prueba limpia los datos y usa emails únicos.
-- **Esperas explícitas** (`WebDriverWait`), sin `Thread.sleep`.
-- **Manejo de errores**: la API responde con un formato de error único; si una prueba de Selenium falla se guarda una captura automática (`CapturaEnFallo`); la conexión con Selenium se reintenta.
-- **Entorno reproducible** con Docker y versiones fijas.
+Reglas: nombre obligatorio de 3 a 60 caracteres, email obligatorio y válido, edad obligatoria entre 18 y 100, email único.
 
 ## Estructura
 
 ```
-├── Dockerfile / docker-compose.yml
-├── postman/usuarios.postman_collection.json
-├── src/main/java/co/edu/calidad/taller/
-│   ├── controller/UsuarioController.java
-│   ├── service/UsuarioService.java
-│   ├── model/ (Usuario, UsuarioRequest)
-│   └── exception/ (ManejadorErrores, ErrorRespuesta, ...)
-├── src/main/resources/static/registro.html
-└── src/test/java/co/edu/calidad/taller/
-    ├── api/UsuarioApiTest.java
-    ├── web/RegistroFormularioTest.java
-    ├── web/pages/RegistroPage.java
-    ├── web/support/ (DriverFactory, CapturaEnFallo, ConNavegador)
-    └── support/ (DatosPrueba, Evidencias, ReporteResultados)
+├── .github/workflows/pruebas.yml        CI
+├── Dockerfile / docker-compose.yml      Entorno reproducible
+├── postman/                             Colección Postman
+├── src/main/java/co/edu/calidad/taller  Aplicación (controller, service, model, exception)
+├── src/main/resources/static/           Formulario registro.html
+└── src/test/java/co/edu/calidad/taller
+    ├── unit/      Unitarias (JUnit 5, Mockito)
+    ├── api/       API con TestRestTemplate
+    ├── web/       Selenium (Page Object en web/pages, utilidades en web/support)
+    └── support/   Datos de prueba, evidencias y reporte de resultados
 ```
