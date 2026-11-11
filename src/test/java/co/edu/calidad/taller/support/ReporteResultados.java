@@ -41,8 +41,8 @@ public class ReporteResultados implements TestWatcher {
     }
 
     private static synchronized void registrar(String estado, ExtensionContext contexto, Throwable causa) {
-        String clase = contexto.getTestClass().map(Class::getSimpleName).orElse("?");
-        String linea = String.format("[%s] %-24s | %s", estado, clase, nombrePrueba(contexto));
+        String clase = contexto.getTestClass().map(ReporteResultados::claseExterna).orElse("?");
+        String linea = String.format("[%s] %-28s | %s", estado, clase, nombrePrueba(contexto));
         if (causa != null) {
             linea += System.lineSeparator() + "         motivo: " + causa.getMessage();
         }
@@ -50,13 +50,32 @@ public class ReporteResultados implements TestWatcher {
         escribir(linea + System.lineSeparator());
     }
 
-    /** En pruebas parametrizadas incluye el nombre del metodo y el caso: "metodo > caso". */
+    /** Para clases @Nested devuelve la clase de prueba principal (ej: UsuarioServiceTest y no Crear). */
+    private static String claseExterna(Class<?> clase) {
+        Class<?> actual = clase;
+        while (actual.getEnclosingClass() != null) {
+            actual = actual.getEnclosingClass();
+        }
+        return actual.getSimpleName();
+    }
+
+    /**
+     * Arma un nombre legible:
+     * - prueba parametrizada: "metodo > caso"
+     * - prueba dentro de una clase @Nested: "grupo > prueba"
+     */
     private static String nombrePrueba(ExtensionContext contexto) {
         Optional<ExtensionContext> padre = contexto.getParent();
         boolean esCasoParametrizado = padre.isPresent() && padre.get().getTestMethod().isPresent();
-        return esCasoParametrizado
-                ? padre.get().getDisplayName() + " > " + contexto.getDisplayName()
-                : contexto.getDisplayName();
+        if (esCasoParametrizado) {
+            return padre.get().getDisplayName() + " > " + contexto.getDisplayName();
+        }
+        boolean estaEnClaseAnidada = contexto.getTestClass()
+                .map(c -> c.getEnclosingClass() != null).orElse(false);
+        if (estaEnClaseAnidada && padre.isPresent()) {
+            return padre.get().getDisplayName() + " > " + contexto.getDisplayName();
+        }
+        return contexto.getDisplayName();
     }
 
     private static void escribir(String texto) {

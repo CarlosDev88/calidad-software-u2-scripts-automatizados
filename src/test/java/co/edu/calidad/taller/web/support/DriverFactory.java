@@ -33,6 +33,16 @@ public final class DriverFactory {
             if (!"false".equalsIgnoreCase(System.getenv("HEADLESS"))) {
                 opciones.addArguments("--headless=new");
             }
+            // Opcional: rutas fijas de Chrome y ChromeDriver (entornos sin internet donde
+            // Selenium Manager no puede descargar el driver)
+            String chrome = System.getenv("CHROME_BIN");
+            if (chrome != null && !chrome.isBlank()) {
+                opciones.setBinary(chrome);
+            }
+            String chromeDriver = System.getenv("CHROMEDRIVER_PATH");
+            if (chromeDriver != null && !chromeDriver.isBlank()) {
+                System.setProperty("webdriver.chrome.driver", chromeDriver);
+            }
             return new ChromeDriver(opciones);
         }
         return crearRemoto(urlRemota, opciones);

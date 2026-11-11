@@ -10,6 +10,7 @@ import co.edu.calidad.taller.web.support.DriverFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -27,6 +28,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Cada caso guarda capturas en evidencias/capturas (datos de entrada y resultado).
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Tag("ui")
 @ExtendWith({ReporteResultados.class, CapturaEnFallo.class})
 @DisplayName("Formulario web de registro (Selenium)")
 class RegistroFormularioTest implements ConNavegador {

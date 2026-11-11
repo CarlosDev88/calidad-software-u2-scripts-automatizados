@@ -1,6 +1,6 @@
 # Infraestructura completa para correr las pruebas sin instalar Java, Maven ni Chrome.
 #
-#   Pruebas (JUnit + TestRestTemplate + Selenium):
+#   Todas las pruebas (unitarias JUnit/Mockito + API TestRestTemplate + Selenium) y cobertura JaCoCo:
 #     docker compose up --build --exit-code-from tests
 #
 #   Pruebas Postman con Newman:

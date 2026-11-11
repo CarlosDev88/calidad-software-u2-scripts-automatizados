@@ -10,5 +10,6 @@ RUN mvn -B -q dependency:go-offline
 # 2) Luego el codigo fuente
 COPY src ./src
 
-# Por defecto corre todas las pruebas, guarda la salida de consola y los reportes de JUnit en ./evidencias
-CMD ["bash", "-c", "set -o pipefail; mkdir -p evidencias; mvn -B test 2>&1 | tee evidencias/salida-consola.txt; estado=$?; cp -r target/surefire-reports evidencias/ 2>/dev/null; exit $estado"]
+# Por defecto corre TODAS las pruebas (unitarias, API y formulario) + reporte de cobertura JaCoCo.
+# Deja en ./evidencias: salida de consola, reportes JUnit y el reporte de cobertura.
+CMD ["bash", "-c", "set -o pipefail; mkdir -p evidencias; mvn -B verify 2>&1 | tee evidencias/salida-consola.txt; estado=$?; cp -r target/surefire-reports evidencias/ 2>/dev/null; mkdir -p evidencias/cobertura; cp target/site/jacoco/jacoco.csv target/site/jacoco/jacoco.xml evidencias/cobertura/ 2>/dev/null; exit $estado"]

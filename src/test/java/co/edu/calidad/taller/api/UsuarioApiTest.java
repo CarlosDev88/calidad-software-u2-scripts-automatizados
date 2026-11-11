@@ -8,6 +8,7 @@ import co.edu.calidad.taller.support.DatosPrueba;
 import co.edu.calidad.taller.support.ReporteResultados;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,6 +34,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * La app se levanta en un puerto aleatorio para que las pruebas sean independientes del entorno.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@Tag("api")
 @ExtendWith(ReporteResultados.class)
 @DisplayName("API REST /api/usuarios")
 class UsuarioApiTest {
