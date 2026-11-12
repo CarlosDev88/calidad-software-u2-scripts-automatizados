@@ -35,7 +35,7 @@ Se siguió la **pirámide de pruebas**: muchas pruebas unitarias rápidas, menos
 | Necesidad | Elegida | Alternativa considerada | Por qué la elegida |
 |---|---|---|---|
 | Pruebas unitarias | JUnit 5 + Mockito | TestNG | JUnit 5 ya viene con Spring Boot y tiene `@ParameterizedTest` y `@Nested`, que se usaron mucho. |
-| API desde Java | TestRestTemplate | REST Assured | La rúbrica nombra TestRestTemplate y viene incluido en Spring Boot; REST Assured tiene una sintaxis más legible, pero suma una dependencia. |
+| API desde Java | TestRestTemplate | REST Assured | Viene incluido en Spring Boot y ya se había usado en el AA1; REST Assured tiene una sintaxis más legible, pero suma una dependencia. |
 | API desde fuera | Postman + Newman | Insomnia | Postman lo pide la actividad, y Newman permite correr la misma colección en consola y en CI. |
 | Interfaz | Selenium WebDriver | Playwright, Cypress | Lo pide la actividad. Playwright espera los elementos de forma automática y suele ser más rápido; con Selenium hubo que programar esperas explícitas. |
 | Cobertura | JaCoCo, mínimo 80 % | Sin mínimo | 80 % es un umbral común: obliga a probar casi todo sin exigir el 100 % en cada clase nueva. |
@@ -85,7 +85,7 @@ Se siguió la **pirámide de pruebas**: muchas pruebas unitarias rápidas, menos
 | **Defecto real**: edad `18.9` se guardaba como `18` y `"25"` (texto) se aceptaba | Jackson convierte tipos en silencio | `accept-float-as-int=false` y `allow-coercion-of-scalars=false` |
 | **Defecto real**: 405 y 415 respondían con otro formato JSON | Solo se manejaban 400, 404 y 409 | Manejadores nuevos en `ManejadorErrores` |
 
-Los tres defectos aparecieron al probar la API a mano con casos fuera de la suite. Primero se escribieron las pruebas que los reproducen: 8 fallaron, como muestra `evidencias/defectos-antes-de-corregir.txt`. Después se corrigió el código y la suite volvió a verde.
+Los tres defectos aparecieron en una revisión posterior de la API, con casos que no estaban en la suite. Primero se escribieron las pruebas que los reproducen: 8 fallaron, como muestra `evidencias/defectos-antes-de-corregir.txt`. Después se corrigió el código y la suite volvió a verde.
 
 ---
 
