@@ -107,9 +107,9 @@ docker version
 docker compose up --build --exit-code-from tests
 ```
 
-El mismo comando corre en GitHub Actions en cada push; así se ve el final de esa ejecución:
+Así termina el comando en PowerShell, en el equipo donde se generaron las evidencias:
 
-![Docker Compose con BUILD SUCCESS en GitHub Actions](evidencias/capturas-proceso/01-actions-junit-build-success.png)
+![Final de docker compose up en PowerShell con BUILD SUCCESS](evidencias/capturas-proceso/05-local-docker-build-success.png)
 
 Mientras corre, el navegador se ve en vivo en http://localhost:7900 (clave `secret`).
 
@@ -128,7 +128,7 @@ docker compose --profile postman run --rm newman
 docker compose --profile demo --profile postman down
 ```
 
-![Resultado de Newman en GitHub Actions](evidencias/capturas-proceso/02-actions-newman.png)
+![Resultado de Newman en PowerShell](evidencias/capturas-proceso/06-local-newman.png)
 
 ### B5. Revisar la cobertura
 
@@ -141,6 +141,12 @@ Abrir `evidencias/cobertura/html/index.html` en el navegador.
 Al hacer push a `main`, la pestaña **Actions** del repositorio muestra la ejecución.
 
 ![GitHub Actions en verde](evidencias/capturas-proceso/04-actions-resumen.png)
+
+El primer trabajo corre el mismo comando de B2 y el segundo la colección Postman de B4:
+
+![Docker Compose con BUILD SUCCESS en GitHub Actions](evidencias/capturas-proceso/01-actions-junit-build-success.png)
+
+![Resultado de Newman en GitHub Actions](evidencias/capturas-proceso/02-actions-newman.png)
 
 ### B7. Evidencias generadas
 

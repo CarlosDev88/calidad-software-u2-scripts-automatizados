@@ -1,46 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Taller Scripts Automatizados - API Usuarios" tests="7" time="0.210">
-  <testsuite name="01 - Crear usuario valido (201)" id="f93e01e7-adee-40c3-b079-dca2d9120a15" timestamp="2026-11-11T22:40:05.452Z" tests="5" failures="0" errors="0" time="0.153">
-    <testcase name="Responde en menos de 2 segundos" time="0.153" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Responde en formato JSON" time="0.153" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 201 Created" time="0.153" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Devuelve el usuario con id y los datos enviados" time="0.153" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Incluye el header Location" time="0.153" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+<testsuites name="Taller Scripts Automatizados - API Usuarios" tests="7" time="0.337">
+  <testsuite name="01 - Crear usuario valido (201)" id="e8f20ae5-30ca-46ae-85af-ff85115ef5fd" timestamp="2026-11-12T01:30:47.720Z" tests="5" failures="0" errors="0" time="0.267">
+    <testcase name="Responde en menos de 2 segundos" time="0.267" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.267" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 201 Created" time="0.267" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Devuelve el usuario con id y los datos enviados" time="0.267" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Incluye el header Location" time="0.267" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
-  <testsuite name="02 - Obtener usuario por id (200)" id="1d8d36f4-226d-4ab0-9d84-aee3a1a612d2" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.008">
-    <testcase name="Responde en menos de 2 segundos" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Responde en formato JSON" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 200 OK" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Es el usuario creado en la peticion anterior" time="0.008" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  <testsuite name="02 - Obtener usuario por id (200)" id="72b119dc-dd08-4a8c-b2e9-3477154e1033" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.012">
+    <testcase name="Responde en menos de 2 segundos" time="0.012" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.012" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 200 OK" time="0.012" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Es el usuario creado en la peticion anterior" time="0.012" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
-  <testsuite name="03 - Listar usuarios (200)" id="cac78ca9-c8fe-4eab-b066-d2f442f88978" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.007">
-    <testcase name="Responde en menos de 2 segundos" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Responde en formato JSON" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 200 OK" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Devuelve una lista con al menos un usuario" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  <testsuite name="03 - Listar usuarios (200)" id="7fad82ea-4a64-451e-9737-8e12d04959c4" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.009">
+    <testcase name="Responde en menos de 2 segundos" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 200 OK" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Devuelve una lista con al menos un usuario" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
-  <testsuite name="04 - Crear usuario con email invalido (400)" id="b27b349c-30b5-462b-812d-b28ec1103c3a" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.017">
-    <testcase name="Responde en menos de 2 segundos" time="0.017" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Responde en formato JSON" time="0.017" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 400 Bad Request" time="0.017" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Indica el error en el campo email" time="0.017" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  <testsuite name="04 - Crear usuario con email invalido (400)" id="be9276f7-d91a-455f-8536-d29e84b98180" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.020">
+    <testcase name="Responde en menos de 2 segundos" time="0.020" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.020" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 400 Bad Request" time="0.020" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Indica el error en el campo email" time="0.020" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
-  <testsuite name="05 - Crear usuario menor de edad (400)" id="4c7dd29f-1eec-4971-a30b-a6ebf6fb1395" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.009">
+  <testsuite name="05 - Crear usuario menor de edad (400)" id="ed9f18a0-8313-4b1b-a902-48990e3f8762" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.009">
     <testcase name="Responde en menos de 2 segundos" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
     <testcase name="Responde en formato JSON" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
     <testcase name="Status 400 Bad Request" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
     <testcase name="Indica el error en el campo edad" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
-  <testsuite name="06 - Crear usuario con email duplicado (409)" id="609284bf-8b7b-4cc2-a8d6-2a142dbe1c78" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.009">
+  <testsuite name="06 - Crear usuario con email duplicado (409)" id="3d8d5519-18c7-4289-8edf-cdec68952d41" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.011">
+    <testcase name="Responde en menos de 2 segundos" time="0.011" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Responde en formato JSON" time="0.011" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 409 Conflict" time="0.011" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Indica que el email ya esta registrado" time="0.011" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+  </testsuite>
+  <testsuite name="07 - Obtener usuario inexistente (404)" id="c0dc431e-195e-4729-aa9c-4c3c431b2929" timestamp="2026-11-12T01:30:47.720Z" tests="4" failures="0" errors="0" time="0.009">
     <testcase name="Responde en menos de 2 segundos" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
     <testcase name="Responde en formato JSON" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 409 Conflict" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Indica que el email ya esta registrado" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-  </testsuite>
-  <testsuite name="07 - Obtener usuario inexistente (404)" id="990fb9f4-c10d-49c9-b381-40e8b3e7a687" timestamp="2026-11-11T22:40:05.452Z" tests="4" failures="0" errors="0" time="0.007">
-    <testcase name="Responde en menos de 2 segundos" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Responde en formato JSON" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="Status 404 Not Found" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
-    <testcase name="El mensaje indica el id buscado" time="0.007" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="Status 404 Not Found" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
+    <testcase name="El mensaje indica el id buscado" time="0.009" classname="TallerScriptsAutomatizadosApiUsuarios"/>
   </testsuite>
 </testsuites>

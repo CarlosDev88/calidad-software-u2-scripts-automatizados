@@ -1,4 +1,4 @@
-Resultados de pruebas automatizadas - 2026-11-11 22:37:34
+Resultados de pruebas automatizadas - 2026-11-12 01:29:24
 ======================================================================
 [OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Email con formato invalido
 [OK   ] RegistroFormularioTest       | Datos invalidos muestran el error en el campo correspondiente > Nombre vacio
